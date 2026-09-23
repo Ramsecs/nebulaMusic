@@ -1,0 +1,260 @@
+/* ==========================================================
+   NÉBULA MUSIC - CÓDIGO BASE (ESTILOS PARA ALUMNOS)
+   ==========================================================
+   Este archivo contiene únicamente la configuración inicial, 
+   reseteo básico y la paleta de colores del proyecto mediante 
+   variables de CSS (:root).
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    --bg-color-dark: #131200;      /* Fondo principal modo oscuro */
+    --text-color-dark: #EDF2F4;    /* Texto principal */
+    --links-color-dark: #EFBDEB;   /* Color normal de enlaces */
+    --links-hover-dark: #8D91C7;   /* Color de enlaces al pasar el mouse */
+    --nav-links: #8d3fd1;          /* Color de enlaces de navegación */
+    --highlight: #EDF67D;          /* Color de acento/resaltados */
+    --card-bd-dark: #1c1a05;
+}
+
+/* Reset básico de márgenes, paddings y modelo de caja */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.6;
+}
+
+/* Enlaces base */
+a {
+    color: var(--links-color-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+a:hover {
+    color: var(--links-hover-dark);
+}
+
+.auth-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+
+}
+
+.auth-card{
+    background-color: var(--card-bd-dark);
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0px 15px 35px rgba(0,0,0,0.5);
+    border: 1px solid #2a280a;
+    transition: max-width 0.3s ease;
+
+}
+
+.form-logo{
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.form-logo img{
+    height: 80px;
+
+}
+
+.form-header{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h3{
+    font-size: 1.8rem;
+    color: var(--text-color-dark);
+    margin-bottom: 5px;
+}
+
+.form-subtitle{
+    font-size: .9rem;
+    color: #f9f9f9;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.form-group label{
+    display: block;
+    font-size: .85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #cbd5e0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select,
+textarea{
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    background-color: #2a280a;
+    color: var(--text-color-dark);
+    font-family: 'Quicksand', sans-serif;
+    font-size: .95rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline: none;
+    border-color: var(--highlight);
+    box-shadow: 0 0 8px rgba(237,246,125,0.3);
+}
+
+input:required,
+select:required{
+    border-left: 4px solid var(--nav-links);
+}
+
+button{
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn-primary{
+    background-color: var(--nav-links);
+    color: white;
+}
+
+.btn-secondary{
+    background-color: transparent;
+    border: 1px solid #cbd5e0;
+    color: #cbd5e0;
+}
+
+.btn-secondary:hover{
+    background-color: #cbd5e0;
+    color: black;
+}
+
+.btn-primary:hover{
+    background-color: var(--highlight);
+    color: black;
+}
+
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(19,18,0,.95);
+    padding: 15px 30px;
+    border-bottom: 2px solid #2a280a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#menu-toggle{
+    display: none;
+}
+
+.menu-button{
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.menu-button span{
+    display: block;
+    height: 3px;
+    width: 100px;
+    background-color: var(--text-color-dark);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+
+nav ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a{
+    color: var(--text-color-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav a:hover{
+    color: var(--highlight);
+}
+
+@media(width <= 768px){
+    .menu-button{
+        display: flex;
+    }
+
+    nav ul{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(19,18,0,.98);
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 20px;
+        display: none;
+    }
+
+    #menu-toggle:checked ~ ul{
+        display: flex;
+    }
+
+    #menu-toggle:checked ~ .menu-button span:nth-child(1){
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    #menu-toggle:checked ~ .menu-button span:nth-child(2){
+        opacity: 0;
+    }
+
+    #menu-toggle:checked ~ .menu-button span:nth-child(3){
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+
+}
+
+
